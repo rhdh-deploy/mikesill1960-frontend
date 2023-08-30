@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mikesill1960-poi-map-app-dev
+  annotations:
+    argocd/app-name: mikesill1960-poi-map-app-dev
+    backstage.io/kubernetes-id: mikesill1960-poi-map-app
+    backstage.io/kubernetes-namespace: mikesill1960
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: rhdh-deploy/mikesill1960-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.a1jxqhzp.eastus2.aroapp.io/dev-pipelines/ns/mikesill1960/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.a1jxqhzp.eastus2.aroapp.io/k8s/ns/mikesill1960/deployments/mikesill1960-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.a1jxqhzp.eastus2.aroapp.io/#https://github.com/rhdh-deploy/mikesill1960-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://mikesill1960-poi-map-app-mikesill1960.apps.a1jxqhzp.eastus2.aroapp.io
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/mikesill1960"
+  system: workshop-system-mikesill1960
+  consumesApis:
+    - gateway-api-mikesill1960
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-mikesill1960
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/mikesill1960"
